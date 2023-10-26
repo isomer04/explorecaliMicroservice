@@ -17,7 +17,7 @@ import java.util.Optional;
  * 
  */
 @RepositoryRestResource(exported = false)
-public interface TourRatingRepository extends CrudRepository<TourRating, TourRatingPk> {
+public interface TourRatingRepository extends CrudRepository<TourRating, String> {
 
     /**
      * Lookup all the TourRatings for a tour.
@@ -25,7 +25,7 @@ public interface TourRatingRepository extends CrudRepository<TourRating, TourRat
      * @param tourId is the tour Identifier
      * @return a List of any found TourRatings
      */
-    List<TourRating> findByPkTourId(Integer tourId);
+    List<TourRating> findByTourId(String tourId);
 
     /**
      * Lookup a TourRating by the TourId and Customer Id
@@ -33,6 +33,14 @@ public interface TourRatingRepository extends CrudRepository<TourRating, TourRat
      * @param customerId customer identifier
      * @return Optional of found TourRatings.
      */
-    Optional<TourRating> findByPkTourIdAndPkCustomerId(Integer tourId, Integer customerId);
-    Page<TourRating> findByPkTourId(Integer tourId, Pageable pageable);
+    Optional<TourRating> findByTourIdAndCustomerId(String tourId, Integer customerId);
+
+    /**
+     * Fetch a Page of TourRatings
+     *
+     * @param tourId the tour identifier
+     * @param pageable info to determine page
+     * @return Page of Tour Ratings
+     */
+    Page<TourRating> findByTourId(String tourId, Pageable pageable);
 }
