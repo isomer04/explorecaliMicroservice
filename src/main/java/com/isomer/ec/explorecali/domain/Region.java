@@ -3,7 +3,7 @@ package com.isomer.ec.explorecali.domain;
 /**
  * Enumeration of the region of California.
  *
- * Created by Mary Ellen Bowman
+ * 
  */
 public enum Region {
     Central_Coast("Central Coast"), Southern_California("Southern California"), Northern_California("Northern California"), Varies("Varies");
